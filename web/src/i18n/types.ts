@@ -71,7 +71,7 @@ export type Translation = {
 
 export const LANGS: { code: Lang; label: string }[] = [
   { code: 'en', label: 'EN' },
-  { code: 'el', label: 'EL' },
+  { code: 'el', label: 'GR' },
   { code: 'hu', label: 'HU' },
   { code: 'de', label: 'DE' },
 ]
