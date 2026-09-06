@@ -4,6 +4,13 @@ export const content = {
   tagline: 'Olive Ray',
   slogan: 'Generations of dedication in every drop',
   signature: 'The place is on the bottle.',
+  /** Vertical ribbon — Greek lines from the bottle / family labels */
+  ribbonGreek: [
+    'Ελιαχτίδα',
+    'ΕΞΑΙΡΕΤΙΚΟ ΠΑΡΘΕΝΟ ΕΛΑΙΟΛΑΔΟ',
+    'Η οικογένειά μας στον τόπο της',
+    'Πρώτη ψυχρή έκθλιψη',
+  ],
   heroLine: 'One family. One grove. Crete.',
   heroSub:
     'Extra virgin olive oil from our family farm — cold extracted with care, and marked with the coordinates of home.',

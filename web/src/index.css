@@ -51,10 +51,17 @@ body {
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
   overflow-x: hidden;
+  padding-left: 2.35rem;
 }
 
 main {
   overflow-x: hidden;
+}
+
+@media (max-width: 900px) {
+  body {
+    padding-left: 1.55rem;
+  }
 }
 
 body.has-custom-cursor {
@@ -1149,6 +1156,93 @@ h2 {
 .ambient-toggle.is-on {
   border-color: var(--sage);
   color: var(--sage-deep);
+}
+
+/* ——— Greek vertical ribbon (bottle lines) ——— */
+.greek-ribbon {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 80;
+  width: 2.35rem;
+  height: 100vh;
+  height: 100dvh;
+  overflow: hidden;
+  pointer-events: none;
+  border-right: 1px solid rgba(26, 28, 24, 0.08);
+  background: rgba(244, 244, 241, 0.55);
+  backdrop-filter: blur(6px);
+}
+
+.greek-ribbon__track {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+  width: 100%;
+  padding: 1rem 0;
+  animation: ribbon-fall 48s linear infinite;
+  will-change: transform;
+}
+
+.greek-ribbon__item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.1rem;
+  padding: 0.85rem 0;
+  font-family: var(--font-display);
+  font-size: 0.78rem;
+  letter-spacing: 0.14em;
+  line-height: 1;
+  color: var(--ink-soft);
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  white-space: nowrap;
+}
+
+.greek-ribbon__dot {
+  display: block;
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: var(--gold);
+  flex-shrink: 0;
+  opacity: 0.85;
+}
+
+@keyframes ribbon-fall {
+  from {
+    transform: translateY(-33.333%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 900px) {
+  .greek-ribbon {
+    width: 1.55rem;
+    background: rgba(244, 244, 241, 0.35);
+  }
+
+  .greek-ribbon__item {
+    font-size: 0.62rem;
+    letter-spacing: 0.1em;
+  }
+}
+
+@media (max-width: 480px) {
+  .greek-ribbon {
+    opacity: 0.72;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .greek-ribbon__track {
+    animation: none;
+    transform: translateY(0);
+  }
 }
 
 @media (pointer: coarse) {

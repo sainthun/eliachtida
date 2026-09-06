@@ -13,6 +13,7 @@ import { Visit } from './components/Visit'
 import { Contact } from './components/Contact'
 import { Footer } from './components/Footer'
 import { AmbientToggle } from './components/AmbientToggle'
+import { GreekRibbon } from './components/GreekRibbon'
 
 export default function App() {
   const [ready, setReady] = useState(false)
@@ -26,6 +27,7 @@ export default function App() {
     <>
       {!ready && <Loader onDone={onLoaderDone} />}
       <CustomCursor />
+      <GreekRibbon />
       <Header />
       <main>
         <Hero ready={ready} />
