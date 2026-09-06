@@ -918,7 +918,7 @@ h2 {
   pointer-events: none;
 }
 
-/* Craft sticky */
+/* Craft — fruit to gold phases */
 .craft {
   background: var(--ink);
   color: var(--bg);
@@ -929,72 +929,89 @@ h2 {
 }
 
 .craft .chapter {
-  color: rgba(244, 244, 241, 0.45);
+  color: rgba(247, 243, 236, 0.45);
 }
 
-.craft .lead {
-  color: rgba(244, 244, 241, 0.7);
+.craft .lead,
+.craft-lead {
+  color: rgba(247, 243, 236, 0.7);
+  max-width: 42ch;
 }
 
-.craft-sticky-wrap {
+.craft-intro {
+  margin-bottom: clamp(2.5rem, 6vw, 4rem);
+}
+
+.craft-intro h2 {
+  max-width: 16ch;
+}
+
+.craft-phases {
   display: grid;
-  grid-template-columns: 0.9fr 1.1fr;
-  gap: clamp(2rem, 5vw, 4rem);
-  align-items: start;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(1.25rem, 3vw, 2rem);
 }
 
-.craft-sticky {
-  position: sticky;
-  top: calc(var(--header-h) + 2rem);
-  padding-bottom: 2rem;
+.craft-phase {
+  display: grid;
+  gap: 1rem;
+}
+
+.craft-phase__visual {
+  aspect-ratio: 4 / 3;
+  width: 100%;
+  background-color: #1a1814;
+  background-size: 300% 200%;
+  background-repeat: no-repeat;
+  border: 1px solid rgba(247, 243, 236, 0.1);
+}
+
+.craft-phase__copy h3 {
+  font-family: var(--font-display);
+  font-size: clamp(1.35rem, 2.2vw, 1.7rem);
+  font-weight: 400;
+  margin: 0 0 0.5rem;
+  color: var(--cream);
+}
+
+.craft-phase__copy p {
+  margin: 0;
+  color: rgba(247, 243, 236, 0.62);
+  font-weight: 300;
+  font-size: 0.95rem;
+  line-height: 1.55;
+  max-width: 32ch;
+}
+
+.craft-phase__eyebrow {
+  display: flex;
+  align-items: baseline;
+  gap: 0.55rem;
+  margin: 0 0 0.45rem !important;
+  font-size: 0.68rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(247, 243, 236, 0.4) !important;
+}
+
+.craft-phase__eyebrow span {
+  color: var(--gold);
 }
 
 @media (max-width: 900px) {
-  .craft-sticky-wrap {
+  .craft-phases {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 560px) {
+  .craft-phases {
     grid-template-columns: 1fr;
   }
 
-  .craft-sticky {
-    position: static;
-    top: auto;
-    padding-bottom: 0.5rem;
+  .craft-phase__copy p {
+    max-width: none;
   }
-}
-
-.craft-steps {
-  list-style: none;
-  margin: 2.5rem 0 0;
-  padding: 0;
-  display: grid;
-  gap: 1.5rem;
-}
-
-.craft-steps li {
-  padding-left: 1rem;
-  border-left: 1px solid rgba(244, 244, 241, 0.2);
-}
-
-.craft-steps strong {
-  display: block;
-  font-family: var(--font-display);
-  font-size: 1.35rem;
-  font-weight: 400;
-  margin-bottom: 0.35rem;
-}
-
-.craft-steps p {
-  margin: 0;
-  color: rgba(244, 244, 241, 0.65);
-  font-weight: 300;
-}
-
-.craft-media {
-  display: grid;
-  gap: 1.25rem;
-}
-
-.craft-media .film-frame {
-  aspect-ratio: 16 / 11;
 }
 
 /* Visit */

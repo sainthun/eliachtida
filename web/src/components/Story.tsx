@@ -58,7 +58,7 @@ export function Story() {
         <FilmFrame>
           <img
             src={content.media.family}
-            alt="A child on the family farm tractor in Crete"
+            alt="Watercolor portrait of a child waving from the family tractor"
             loading="lazy"
           />
         </FilmFrame>

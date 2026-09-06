@@ -65,10 +65,44 @@ export const content = {
   craft: {
     chapter: '04',
     title: 'From fruit to gold',
-    steps: [
-      { title: 'Harvest', text: 'Olives picked at the right green — for aroma, not volume.' },
-      { title: 'Press', text: 'Modern Pieralisi extraction, guided by family hands.' },
-      { title: 'Bottle', text: 'Dark glass and tin to protect what the sun grew.' },
+    lead: 'Six quiet chapters — from ancient trees to bread torn at the table. Nothing hurried. Nothing anonymous.',
+    phases: [
+      {
+        title: 'The Grove',
+        eyebrow: 'Origin',
+        text: 'Gnarled trunks. Cretan light. Olives ripening where sea air meets hillside stone — the first chapter of every bottle.',
+        position: '0% 0%',
+      },
+      {
+        title: 'The Hand Harvest',
+        eyebrow: 'Gather',
+        text: 'Wooden rakes. Green nets. Fruit taken by hand at the right green — chosen for aroma, never for speed.',
+        position: '50% 0%',
+      },
+      {
+        title: 'The Wash',
+        eyebrow: 'Prepare',
+        text: 'Clear water over purple and green fruit. A bright rinse before the press — purity begins before the gold appears.',
+        position: '100% 0%',
+      },
+      {
+        title: 'The Extraction',
+        eyebrow: 'Press',
+        text: 'Cold, patient, luminous. A thick pour of liquid gold leaving the mill — the moment fruit becomes oil.',
+        position: '0% 100%',
+      },
+      {
+        title: 'The Bottle',
+        eyebrow: 'Guard',
+        text: 'Dark glass. Soft hands. Each bottle held to the light, then set aside to protect what the sun grew.',
+        position: '50% 100%',
+      },
+      {
+        title: 'The Table',
+        eyebrow: 'Share',
+        text: 'Crust torn. Oil pooled. Bread dipped under open sky — the reason the grove works at all.',
+        position: '100% 100%',
+      },
     ],
   },
 
@@ -81,7 +115,8 @@ export const content = {
     bottle: '/media/bottle-1l.png',
     bottleLabel: '/media/bottle-label.png',
     tins: '/media/tins-lineup.png',
-    family: '/media/family-tractor.jfif',
+    family: '/media/family-watercolor.png',
+    processPhases: '/media/process-phases.png',
     millOlives: '/media/mill-olives.jpg',
     millPieralisi: '/media/mill-pieralisi.jpg',
     craft01: '/media/craft-01.mp4',

@@ -2,7 +2,6 @@ import { useEffect, useRef } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { content } from '../content'
-import { FilmFrame } from './FilmFrame'
 import { usePrefersReducedMotion } from '../hooks/useMedia'
 
 gsap.registerPlugin(ScrollTrigger)
@@ -15,16 +14,23 @@ export function Craft() {
     if (!rootRef.current || reduced) return
 
     const ctx = gsap.context(() => {
-      gsap.utils.toArray<HTMLElement>('.craft-media .film-frame').forEach((el) => {
-        gsap.from(el.querySelector('.film-frame__media img, .film-frame__media video'), {
-          clipPath: 'inset(12% 12% 12% 12%)',
-          scale: 1.1,
-          duration: 1.2,
+      gsap.from('.craft-intro > *', {
+        y: 36,
+        opacity: 0,
+        duration: 0.9,
+        stagger: 0.08,
+        ease: 'power3.out',
+        scrollTrigger: { trigger: rootRef.current, start: 'top 75%' },
+      })
+
+      gsap.utils.toArray<HTMLElement>('.craft-phase').forEach((el, i) => {
+        gsap.from(el, {
+          y: 48,
+          opacity: 0,
+          duration: 0.95,
+          delay: (i % 3) * 0.06,
           ease: 'power3.out',
-          scrollTrigger: {
-            trigger: el,
-            start: 'top 85%',
-          },
+          scrollTrigger: { trigger: el, start: 'top 88%' },
         })
       })
     }, rootRef)
@@ -34,53 +40,36 @@ export function Craft() {
 
   return (
     <section className="section craft" id="craft" ref={rootRef}>
-      <div className="wrap craft-sticky-wrap">
-        <div className="craft-sticky">
+      <div className="wrap">
+        <div className="craft-intro">
           <p className="chapter">
             <span>{content.craft.chapter}</span> Craft
           </p>
           <h2>{content.craft.title}</h2>
-          <p className="lead">
-            Tradition meets precise extraction — olives in, gold out, nothing hurried.
-          </p>
-
-          <ol className="craft-steps">
-            {content.craft.steps.map((step, i) => (
-              <li key={step.title}>
-                <strong>
-                  0{i + 1} — {step.title}
-                </strong>
-                <p>{step.text}</p>
-              </li>
-            ))}
-          </ol>
+          <p className="lead craft-lead">{content.craft.lead}</p>
         </div>
 
-        <div className="craft-media">
-          <FilmFrame aspect="wide">
-            <img
-              src={content.media.millOlives}
-              alt="Fresh green olives on the mill conveyor"
-              loading="lazy"
-            />
-          </FilmFrame>
-          <FilmFrame aspect="wide" sprocket>
-            <video
-              src={content.media.craft01}
-              autoPlay
-              muted
-              loop
-              playsInline
-              poster={content.media.millPieralisi}
-            />
-          </FilmFrame>
-          <FilmFrame aspect="wide">
-            <img
-              src={content.media.millPieralisi}
-              alt="Pieralisi olive oil extraction line"
-              loading="lazy"
-            />
-          </FilmFrame>
+        <div className="craft-phases">
+          {content.craft.phases.map((phase, i) => (
+            <article key={phase.title} className="craft-phase">
+              <div
+                className="craft-phase__visual"
+                style={{
+                  backgroundImage: `url(${content.media.processPhases})`,
+                  backgroundPosition: phase.position,
+                }}
+                role="img"
+                aria-label={phase.title}
+              />
+              <div className="craft-phase__copy">
+                <p className="craft-phase__eyebrow">
+                  <span>0{i + 1}</span> {phase.eyebrow}
+                </p>
+                <h3>{phase.title}</h3>
+                <p>{phase.text}</p>
+              </div>
+            </article>
+          ))}
         </div>
       </div>
     </section>
