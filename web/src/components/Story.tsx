@@ -2,6 +2,7 @@ import { useEffect, useRef } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { content } from '../content'
+import { useI18n } from '../i18n/I18nProvider'
 import { FilmFrame } from './FilmFrame'
 import { usePrefersReducedMotion } from '../hooks/useMedia'
 
@@ -10,6 +11,7 @@ gsap.registerPlugin(ScrollTrigger)
 export function Story() {
   const rootRef = useRef<HTMLElement>(null)
   const reduced = usePrefersReducedMotion()
+  const { t } = useI18n()
 
   useEffect(() => {
     if (!rootRef.current || reduced) return
@@ -47,18 +49,18 @@ export function Story() {
       <div className="wrap split">
         <div className="story-copy">
           <p className="chapter">
-            <span>{content.story.chapter}</span> Story
+            <span>01</span> {t.chapters.story}
           </p>
-          <h2>{content.story.title}</h2>
-          <p className="lead">{content.story.body}</p>
-          <p className="story-note">{content.signature}</p>
-          <p className="story-slogan">{content.slogan}</p>
+          <h2>{t.story.title}</h2>
+          <p className="lead">{t.story.body}</p>
+          <p className="story-note">{t.signature}</p>
+          <p className="story-slogan">{t.slogan}</p>
         </div>
 
         <FilmFrame>
           <img
             src={content.media.family}
-            alt="Watercolor portrait of a child waving from the family tractor"
+            alt=""
             loading="lazy"
           />
         </FilmFrame>

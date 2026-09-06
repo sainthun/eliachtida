@@ -1,8 +1,10 @@
 import { useEffect, useRef, useState } from 'react'
+import { useI18n } from '../i18n/I18nProvider'
 
 /** Soft ambient drone via Web Audio — muted by default. */
 export function AmbientToggle() {
   const [on, setOn] = useState(false)
+  const { t } = useI18n()
   const ctxRef = useRef<AudioContext | null>(null)
   const nodesRef = useRef<{ osc: OscillatorNode; gain: GainNode }[]>([])
 
@@ -68,7 +70,7 @@ export function AmbientToggle() {
       aria-label={on ? 'Mute ambient sound' : 'Play ambient sound'}
       title={on ? 'Sound on' : 'Sound off'}
     >
-      {on ? 'On' : 'Sound'}
+      {on ? t.soundOn : t.sound}
     </button>
   )
 }

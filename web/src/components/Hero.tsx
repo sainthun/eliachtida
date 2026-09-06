@@ -1,6 +1,7 @@
 import { useEffect, useRef } from 'react'
 import gsap from 'gsap'
 import { content } from '../content'
+import { useI18n } from '../i18n/I18nProvider'
 import { MagneticButton } from './MagneticButton'
 import { usePrefersReducedMotion } from '../hooks/useMedia'
 
@@ -11,6 +12,7 @@ type Props = {
 export function Hero({ ready }: Props) {
   const rootRef = useRef<HTMLElement>(null)
   const reduced = usePrefersReducedMotion()
+  const { t } = useI18n()
 
   useEffect(() => {
     if (!ready || !rootRef.current || reduced) return
@@ -59,16 +61,16 @@ export function Hero({ ready }: Props) {
           <span className="reveal-line">
             <span>{content.brand}</span>
           </span>
-          <em>{content.tagline}</em>
+          <em>{t.tagline}</em>
         </h1>
-        <p className="hero-line">{content.heroLine}</p>
-        <p className="hero-sub">{content.heroSub}</p>
+        <p className="hero-line">{t.heroLine}</p>
+        <p className="hero-sub">{t.heroSub}</p>
         <div className="hero-actions">
           <MagneticButton as="a" href="#story" className="btn-primary">
-            Discover our story
+            {t.discoverStory}
           </MagneticButton>
           <MagneticButton as="a" href="#oil" className="btn-ghost">
-            The oil
+            {t.theOil}
           </MagneticButton>
         </div>
       </div>

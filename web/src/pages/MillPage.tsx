@@ -1,34 +1,28 @@
 import { Link } from 'react-router-dom'
+import { useEffect } from 'react'
 import { content } from '../content'
+import { useI18n } from '../i18n/I18nProvider'
 import { Header } from '../components/Header'
 import { Footer } from '../components/Footer'
 import { FilmFrame } from '../components/FilmFrame'
 import { GreekRibbon } from '../components/GreekRibbon'
 import { CustomCursor } from '../components/CustomCursor'
-import { useEffect } from 'react'
 
-const clips = [
-  {
-    src: content.media.craft01,
-    poster: content.media.millOlives,
-    title: 'Fruit on the line',
-    text: 'Fresh olives climbing toward the press — the loud, honest middle of the harvest day.',
-  },
-  {
-    src: content.media.craft02,
-    poster: content.media.millPieralisi,
-    title: 'Inside the mill',
-    text: 'Steel, patience, and the quiet work between grove and bottle.',
-  },
-  {
-    src: content.media.craft03,
-    poster: content.media.millPieralisi,
-    title: 'Press in motion',
-    text: 'Where fruit turns gold — filmed as it happens on the estate.',
-  },
+const clipMedia = [
+  content.media.craft01,
+  content.media.craft02,
+  content.media.craft03,
+] as const
+
+const clipPosters = [
+  content.media.millOlives,
+  content.media.millPieralisi,
+  content.media.millPieralisi,
 ] as const
 
 export function MillPage() {
+  const { t } = useI18n()
+
   useEffect(() => {
     window.scrollTo(0, 0)
   }, [])
@@ -42,15 +36,12 @@ export function MillPage() {
         <section className="section mill-hero">
           <div className="wrap">
             <p className="chapter">
-              <span>Archive</span> The mill
+              <span>{t.mill.chapter}</span> {t.nav.mill}
             </p>
-            <h1 className="mill-title">Behind the press</h1>
-            <p className="lead mill-lead">
-              The watercolor story on the home page is the poetry. These clips are the
-              workshop — real lines, real fruit, real extraction on the family estate.
-            </p>
+            <h1 className="mill-title">{t.mill.title}</h1>
+            <p className="lead mill-lead">{t.mill.lead}</p>
             <Link to="/" className="btn btn-ghost mill-back">
-              ← Back to eliachtida
+              {t.mill.back}
             </Link>
           </div>
         </section>
@@ -60,14 +51,14 @@ export function MillPage() {
             <FilmFrame aspect="wide">
               <img
                 src={content.media.millOlives}
-                alt="Green olives on the mill conveyor"
+                alt=""
                 loading="lazy"
               />
             </FilmFrame>
             <FilmFrame aspect="wide">
               <img
                 src={content.media.millPieralisi}
-                alt="Pieralisi extraction line in the family mill"
+                alt=""
                 loading="lazy"
               />
             </FilmFrame>
@@ -77,12 +68,12 @@ export function MillPage() {
         <section className="section mill-clips">
           <div className="wrap">
             <div className="mill-clips-list">
-              {clips.map((clip) => (
-                <article key={clip.src} className="mill-clip">
+              {t.mill.clips.map((clip, i) => (
+                <article key={clip.title} className="mill-clip">
                   <FilmFrame aspect="wide" sprocket>
                     <video
-                      src={clip.src}
-                      poster={clip.poster}
+                      src={clipMedia[i]}
+                      poster={clipPosters[i]}
                       controls
                       playsInline
                       preload="metadata"
@@ -98,7 +89,7 @@ export function MillPage() {
 
             <div className="mill-footer-cta">
               <Link to="/#craft" className="btn btn-primary">
-                Return to From fruit to gold
+                {t.mill.returnCraft}
               </Link>
             </div>
           </div>

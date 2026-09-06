@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { content } from '../content'
+import { useI18n } from '../i18n/I18nProvider'
 import { usePrefersReducedMotion } from '../hooks/useMedia'
 
 gsap.registerPlugin(ScrollTrigger)
@@ -10,6 +11,7 @@ gsap.registerPlugin(ScrollTrigger)
 export function Craft() {
   const rootRef = useRef<HTMLElement>(null)
   const reduced = usePrefersReducedMotion()
+  const { t } = useI18n()
 
   useEffect(() => {
     if (!rootRef.current || reduced) return
@@ -37,27 +39,27 @@ export function Craft() {
     }, rootRef)
 
     return () => ctx.revert()
-  }, [reduced])
+  }, [reduced, t])
 
   return (
     <section className="section craft" id="craft" ref={rootRef}>
       <div className="wrap">
         <div className="craft-intro">
           <p className="chapter">
-            <span>{content.craft.chapter}</span> Craft
+            <span>04</span> {t.chapters.craft}
           </p>
-          <h2>{content.craft.title}</h2>
-          <p className="lead craft-lead">{content.craft.lead}</p>
+          <h2>{t.craft.title}</h2>
+          <p className="lead craft-lead">{t.craft.lead}</p>
         </div>
 
         <div className="craft-phases">
-          {content.craft.phases.map((phase, i) => (
+          {t.craft.phases.map((phase, i) => (
             <article key={phase.title} className="craft-phase">
               <div
                 className="craft-phase__visual"
                 style={{
                   backgroundImage: `url(${content.media.processPhases})`,
-                  backgroundPosition: phase.position,
+                  backgroundPosition: content.phasePositions[i],
                 }}
                 role="img"
                 aria-label={phase.title}
@@ -74,9 +76,9 @@ export function Craft() {
         </div>
 
         <div className="craft-mill-cta">
-          <p>Want the real mill floor — steel, fruit, and the press in motion?</p>
+          <p>{t.craft.millCta}</p>
           <Link to="/mill" className="btn btn-ghost craft-mill-btn">
-            Watch the mill films →
+            {t.craft.millBtn}
           </Link>
         </div>
       </div>

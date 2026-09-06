@@ -1,8 +1,10 @@
 import { Link } from 'react-router-dom'
 import { content } from '../content'
+import { useI18n } from '../i18n/I18nProvider'
 
 export function Footer() {
   const year = new Date().getFullYear()
+  const { t } = useI18n()
 
   return (
     <footer className="site-footer">
@@ -12,14 +14,14 @@ export function Footer() {
         </p>
         <div className="footer-row">
           <p>
-            © {year} {content.brand} · {content.tagline}
+            © {year} {content.brand} · {t.tagline}
           </p>
           <div className="footer-links">
-            <Link to="/#story">Story</Link>
-            <Link to="/#oil">Oil</Link>
-            <Link to="/#grove">Grove</Link>
-            <Link to="/mill">Mill</Link>
-            <a href={`mailto:${content.contact.email}`}>Email</a>
+            <Link to="/#story">{t.nav.story}</Link>
+            <Link to="/#oil">{t.nav.oil}</Link>
+            <Link to="/#grove">{t.nav.grove}</Link>
+            <Link to="/mill">{t.nav.mill}</Link>
+            <a href={`mailto:${content.contact.email}`}>{t.contact.email}</a>
           </div>
         </div>
       </div>

@@ -2,6 +2,7 @@ import { useEffect, useRef } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { content } from '../content'
+import { useI18n } from '../i18n/I18nProvider'
 import { usePrefersReducedMotion } from '../hooks/useMedia'
 
 gsap.registerPlugin(ScrollTrigger)
@@ -9,6 +10,7 @@ gsap.registerPlugin(ScrollTrigger)
 export function Grove() {
   const rootRef = useRef<HTMLElement>(null)
   const reduced = usePrefersReducedMotion()
+  const { t } = useI18n()
 
   const { lat, lng } = content.coords
   const mapSrc = `https://www.openstreetmap.org/export/embed.html?bbox=${lng - 0.08}%2C${lat - 0.05}%2C${lng + 0.08}%2C${lat + 0.05}&layer=mapnik&marker=${lat}%2C${lng}`
@@ -35,12 +37,12 @@ export function Grove() {
       <div className="wrap grove-grid">
         <div>
           <p className="chapter">
-            <span>{content.grove.chapter}</span> Grove
+            <span>03</span> {t.chapters.grove}
           </p>
-          <h2>{content.grove.title}</h2>
-          <p className="lead">{content.grove.body}</p>
+          <h2>{t.grove.title}</h2>
+          <p className="lead">{t.grove.body}</p>
           <p className="story-note" style={{ marginTop: '1.5rem' }}>
-            {content.signature}
+            {t.signature}
           </p>
 
           <div className="coords-display" aria-label="Grove coordinates">
@@ -53,7 +55,7 @@ export function Grove() {
           </div>
 
           <p style={{ color: 'var(--muted)', fontSize: '0.95rem' }}>
-            {content.contact.addressLine}
+            {t.grove.addressLine}
           </p>
         </div>
 

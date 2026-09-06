@@ -1,8 +1,11 @@
 import type { FormEvent } from 'react'
 import { content } from '../content'
+import { useI18n } from '../i18n/I18nProvider'
 import { MagneticButton } from './MagneticButton'
 
 export function Contact() {
+  const { t } = useI18n()
+
   const onSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     const data = new FormData(e.currentTarget)
@@ -20,28 +23,26 @@ export function Contact() {
       <div className="wrap contact-grid">
         <div>
           <p className="chapter">
-            <span>06</span> Contact
+            <span>06</span> {t.chapters.contact}
           </p>
-          <h2>Get in touch</h2>
-          <p className="lead">
-            Orders, wholesale, or a quiet visit to the grove — we read every note.
-          </p>
+          <h2>{t.contact.title}</h2>
+          <p className="lead">{t.contact.lead}</p>
 
           <ul className="contact-list">
             <li>
-              <small>Email</small>
+              <small>{t.contact.email}</small>
               <a href={`mailto:${content.contact.email}`}>{content.contact.email}</a>
             </li>
             <li>
-              <small>Phone</small>
+              <small>{t.contact.phone}</small>
               <span>{content.contact.phone}</span>
             </li>
             <li>
-              <small>Place</small>
-              <span>{content.contact.addressLine}</span>
+              <small>{t.contact.place}</small>
+              <span>{t.grove.addressLine}</span>
             </li>
             <li>
-              <small>Coordinates</small>
+              <small>{t.contact.coordinates}</small>
               <span>{content.coords.label}</span>
             </li>
           </ul>
@@ -49,20 +50,20 @@ export function Contact() {
 
         <form className="form" onSubmit={onSubmit}>
           <label>
-            Name
-            <input name="name" type="text" placeholder="Your name" required />
+            {t.contact.name}
+            <input name="name" type="text" placeholder={t.contact.namePh} required />
           </label>
           <label>
-            Email
-            <input name="email" type="email" placeholder="EMAIL@address.com" required />
+            {t.contact.email}
+            <input name="email" type="email" placeholder={t.contact.emailPh} required />
           </label>
           <label>
-            Message
-            <textarea name="message" placeholder="How can we help?" required />
+            {t.contact.message}
+            <textarea name="message" placeholder={t.contact.messagePh} required />
           </label>
-          <p className="form-note">Opens your email app — no data is stored on this site.</p>
+          <p className="form-note">{t.contact.formNote}</p>
           <MagneticButton type="submit" className="btn-primary">
-            Send message
+            {t.contact.send}
           </MagneticButton>
         </form>
       </div>

@@ -2,6 +2,7 @@ import { useEffect, useRef } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { content } from '../content'
+import { useI18n } from '../i18n/I18nProvider'
 import { MagneticButton } from './MagneticButton'
 import { FilmFrame } from './FilmFrame'
 import { useMediaQuery, usePrefersReducedMotion } from '../hooks/useMedia'
@@ -14,6 +15,7 @@ export function Oil() {
   const bottleRef = useRef<HTMLImageElement>(null)
   const fine = useMediaQuery('(pointer: fine)')
   const reduced = usePrefersReducedMotion()
+  const { t } = useI18n()
 
   useEffect(() => {
     if (!rootRef.current || reduced) return
@@ -82,13 +84,13 @@ export function Oil() {
 
         <div className="oil-copy">
           <p className="chapter">
-            <span>{content.oil.chapter}</span> Oil
+            <span>02</span> {t.chapters.oil}
           </p>
-          <h2>{content.oil.title}</h2>
-          <p className="lead">{content.oil.body}</p>
+          <h2>{t.oil.title}</h2>
+          <p className="lead">{t.oil.body}</p>
 
           <ul className="facts">
-            {content.oil.facts.map((f) => (
+            {t.oil.facts.map((f) => (
               <li key={f.label}>
                 <strong>{f.label}</strong>
                 <span>{f.detail}</span>
@@ -102,7 +104,7 @@ export function Oil() {
               href={`mailto:${content.contact.email}?subject=Order%20inquiry%20—%20eliachtida`}
               className="btn-primary"
             >
-              Inquire to order
+              {t.oil.inquireOrder}
             </MagneticButton>
           </div>
 
