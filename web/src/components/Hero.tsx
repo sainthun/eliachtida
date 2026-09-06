@@ -50,6 +50,8 @@ export function Hero({ ready }: Props) {
           poster={content.media.millOlives}
         />
         <div className="hero-shade" />
+        <div className="hero-grain" />
+        <div className="hero-vignette" />
       </div>
 
       <div className="hero-content">

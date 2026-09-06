@@ -3,9 +3,10 @@ export const content = {
   brandGreek: 'Ελιαχτίδα',
   tagline: 'Olive Ray',
   slogan: 'Generations of dedication in every drop',
-  heroLine: 'Family farm. Crete. Extra virgin.',
+  signature: 'The place is on the bottle.',
+  heroLine: 'One family. One grove. Crete.',
   heroSub:
-    'Single-estate olive oil, cold extracted with care — from our grove to your table.',
+    'Extra virgin olive oil from our family farm — cold extracted with care, and marked with the coordinates of home.',
 
   coords: {
     lat: 33.4117157,
@@ -51,7 +52,7 @@ export const content = {
   grove: {
     chapter: '03',
     title: 'The place on the bottle',
-    body: 'Every bottle carries the coordinates of our grove — so you know exactly where this oil begins.',
+    body: 'Every bottle carries the coordinates of our grove — so you know exactly where this oil begins. Not somewhere in Crete. Here.',
   },
 
   craft: {

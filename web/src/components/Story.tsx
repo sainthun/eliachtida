@@ -2,6 +2,7 @@ import { useEffect, useRef } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { content } from '../content'
+import { FilmFrame } from './FilmFrame'
 import { usePrefersReducedMotion } from '../hooks/useMedia'
 
 gsap.registerPlugin(ScrollTrigger)
@@ -26,13 +27,13 @@ export function Story() {
         },
       })
 
-      gsap.from('.story .mask-reveal img', {
+      gsap.from('.story .film-frame__media img', {
         clipPath: 'inset(100% 0 0 0)',
         scale: 1.12,
         duration: 1.35,
         ease: 'power3.out',
         scrollTrigger: {
-          trigger: '.story .mask-reveal',
+          trigger: '.story .film-frame',
           start: 'top 80%',
         },
       })
@@ -50,16 +51,17 @@ export function Story() {
           </p>
           <h2>{content.story.title}</h2>
           <p className="lead">{content.story.body}</p>
-          <p className="story-note">{content.slogan}</p>
+          <p className="story-note">{content.signature}</p>
+          <p className="story-slogan">{content.slogan}</p>
         </div>
 
-        <div className="mask-reveal frame">
+        <FilmFrame>
           <img
             src={content.media.family}
             alt="A child on the family farm tractor in Crete"
             loading="lazy"
           />
-        </div>
+        </FilmFrame>
       </div>
     </section>
   )

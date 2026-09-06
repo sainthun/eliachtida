@@ -39,6 +39,9 @@ export function Grove() {
           </p>
           <h2>{content.grove.title}</h2>
           <p className="lead">{content.grove.body}</p>
+          <p className="story-note" style={{ marginTop: '1.5rem' }}>
+            {content.signature}
+          </p>
 
           <div className="coords-display" aria-label="Grove coordinates">
             <div className="lat">

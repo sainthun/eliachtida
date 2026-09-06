@@ -3,6 +3,7 @@ import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { content } from '../content'
 import { MagneticButton } from './MagneticButton'
+import { FilmFrame } from './FilmFrame'
 import { useMediaQuery, usePrefersReducedMotion } from '../hooks/useMedia'
 
 gsap.registerPlugin(ScrollTrigger)
@@ -106,11 +107,13 @@ export function Oil() {
           </div>
 
           <div className="tins">
-            <img
-              src={content.media.tins}
-              alt="eliachtida bottle and tin formats"
-              loading="lazy"
-            />
+            <FilmFrame aspect="wide">
+              <img
+                src={content.media.tins}
+                alt="eliachtida bottle and tin formats"
+                loading="lazy"
+              />
+            </FilmFrame>
           </div>
         </div>
       </div>

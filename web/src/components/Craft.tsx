@@ -2,6 +2,7 @@ import { useEffect, useRef } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { content } from '../content'
+import { FilmFrame } from './FilmFrame'
 import { usePrefersReducedMotion } from '../hooks/useMedia'
 
 gsap.registerPlugin(ScrollTrigger)
@@ -14,8 +15,8 @@ export function Craft() {
     if (!rootRef.current || reduced) return
 
     const ctx = gsap.context(() => {
-      gsap.utils.toArray<HTMLElement>('.craft-media .mask-reveal').forEach((el) => {
-        gsap.from(el.querySelector('img, video'), {
+      gsap.utils.toArray<HTMLElement>('.craft-media .film-frame').forEach((el) => {
+        gsap.from(el.querySelector('.film-frame__media img, .film-frame__media video'), {
           clipPath: 'inset(12% 12% 12% 12%)',
           scale: 1.1,
           duration: 1.2,
@@ -56,14 +57,14 @@ export function Craft() {
         </div>
 
         <div className="craft-media">
-          <div className="mask-reveal frame">
+          <FilmFrame aspect="wide">
             <img
               src={content.media.millOlives}
               alt="Fresh green olives on the mill conveyor"
               loading="lazy"
             />
-          </div>
-          <div className="mask-reveal frame">
+          </FilmFrame>
+          <FilmFrame aspect="wide" sprocket>
             <video
               src={content.media.craft01}
               autoPlay
@@ -72,23 +73,14 @@ export function Craft() {
               playsInline
               poster={content.media.millPieralisi}
             />
-          </div>
-          <div className="mask-reveal frame">
+          </FilmFrame>
+          <FilmFrame aspect="wide">
             <img
               src={content.media.millPieralisi}
               alt="Pieralisi olive oil extraction line"
               loading="lazy"
             />
-          </div>
-          <div className="mask-reveal frame">
-            <video
-              src={content.media.craft03}
-              autoPlay
-              muted
-              loop
-              playsInline
-            />
-          </div>
+          </FilmFrame>
         </div>
       </div>
     </section>
