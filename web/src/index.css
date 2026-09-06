@@ -441,8 +441,8 @@ h2 {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  /* Soft film grade in-browser — no DaVinci needed for this look */
-  filter: saturate(0.82) contrast(1.08) brightness(0.92) sepia(0.18);
+  /* Soft pastel grade in-browser — no DaVinci needed */
+  filter: saturate(0.62) contrast(0.94) brightness(1.08) sepia(0.28) hue-rotate(-6deg);
   transform-origin: center center;
 }
 
@@ -452,16 +452,16 @@ h2 {
   background:
     linear-gradient(
       180deg,
-      rgba(28, 26, 22, 0.35) 0%,
-      rgba(28, 26, 22, 0.12) 38%,
-      rgba(28, 26, 22, 0.78) 100%
+      rgba(232, 223, 208, 0.28) 0%,
+      rgba(28, 26, 22, 0.08) 36%,
+      rgba(28, 26, 22, 0.72) 100%
     ),
     linear-gradient(
       90deg,
-      rgba(176, 141, 85, 0.12) 0%,
-      transparent 28%,
-      transparent 72%,
-      rgba(28, 26, 22, 0.15) 100%
+      rgba(176, 141, 85, 0.14) 0%,
+      transparent 30%,
+      transparent 70%,
+      rgba(232, 223, 208, 0.12) 100%
     );
 }
 
@@ -1012,6 +1012,104 @@ h2 {
   .craft-phase__copy p {
     max-width: none;
   }
+}
+
+.craft-mill-cta {
+  margin-top: clamp(2.5rem, 6vw, 4rem);
+  padding-top: 2rem;
+  border-top: 1px solid rgba(247, 243, 236, 0.12);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.25rem;
+}
+
+.craft-mill-cta p {
+  margin: 0;
+  max-width: 36ch;
+  color: rgba(247, 243, 236, 0.62);
+  font-weight: 300;
+}
+
+.craft .craft-mill-btn {
+  border-color: rgba(247, 243, 236, 0.28);
+  color: var(--cream);
+}
+
+.craft .craft-mill-btn:hover {
+  border-color: var(--cream);
+}
+
+/* Mill archive page */
+.mill-page {
+  padding-top: var(--header-h);
+}
+
+.mill-title {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 7vw, 4.5rem);
+  font-weight: 400;
+  margin: 0 0 1rem;
+  letter-spacing: -0.03em;
+}
+
+.mill-lead {
+  margin-bottom: 1.75rem;
+}
+
+.mill-back {
+  display: inline-flex;
+}
+
+.mill-stills-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+}
+
+@media (max-width: 700px) {
+  .mill-stills-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.mill-clips-list {
+  display: grid;
+  gap: clamp(2.5rem, 6vw, 4rem);
+}
+
+.mill-clip {
+  display: grid;
+  grid-template-columns: 1.35fr 0.85fr;
+  gap: clamp(1.25rem, 4vw, 2.5rem);
+  align-items: center;
+}
+
+@media (max-width: 800px) {
+  .mill-clip {
+    grid-template-columns: 1fr;
+  }
+}
+
+.mill-clip__copy h2 {
+  font-family: var(--font-display);
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  font-weight: 400;
+  margin: 0 0 0.75rem;
+}
+
+.mill-clip__copy p {
+  margin: 0;
+  color: var(--ink-soft);
+  font-weight: 300;
+  max-width: 32ch;
+}
+
+.mill-footer-cta {
+  margin-top: clamp(2.5rem, 6vw, 4rem);
+  padding-top: 2rem;
+  border-top: 1px solid var(--line);
 }
 
 /* Visit */

@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import { content } from '../content'
 
 export function Footer() {
@@ -14,9 +15,10 @@ export function Footer() {
             © {year} {content.brand} · {content.tagline}
           </p>
           <div className="footer-links">
-            <a href="#story">Story</a>
-            <a href="#oil">Oil</a>
-            <a href="#grove">Grove</a>
+            <Link to="/#story">Story</Link>
+            <Link to="/#oil">Oil</Link>
+            <Link to="/#grove">Grove</Link>
+            <Link to="/mill">Mill</Link>
             <a href={`mailto:${content.contact.email}`}>Email</a>
           </div>
         </div>

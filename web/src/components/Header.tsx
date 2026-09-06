@@ -1,10 +1,13 @@
 import { useEffect, useState } from 'react'
+import { Link, useLocation } from 'react-router-dom'
 import { content } from '../content'
 import { MagneticButton } from './MagneticButton'
 
 export function Header() {
   const [scrolled, setScrolled] = useState(false)
   const [open, setOpen] = useState(false)
+  const { pathname } = useLocation()
+  const home = pathname === '/'
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40)
@@ -23,19 +26,26 @@ export function Header() {
   const close = () => setOpen(false)
 
   return (
-    <header className={`site-header ${scrolled ? 'is-scrolled' : ''}`}>
+    <header className={`site-header ${scrolled || !home ? 'is-scrolled' : ''}`}>
       <div className="wrap">
-        <a href="#top" className="logo" onClick={close}>
+        <Link to="/" className="logo" onClick={close}>
           {content.brand}
           <small>{content.tagline}</small>
-        </a>
+        </Link>
 
         <nav className={`nav ${open ? 'is-open' : ''}`} aria-label="Primary">
           {content.nav.map((item) => (
-            <a key={item.id} href={`#${item.id}`} onClick={close}>
+            <Link
+              key={item.id}
+              to={home ? `#${item.id}` : `/#${item.id}`}
+              onClick={close}
+            >
               {item.label}
-            </a>
+            </Link>
           ))}
+          <Link to="/mill" onClick={close}>
+            Mill
+          </Link>
         </nav>
 
         <div className="header-cta">

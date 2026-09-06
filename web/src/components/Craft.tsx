@@ -1,4 +1,5 @@
 import { useEffect, useRef } from 'react'
+import { Link } from 'react-router-dom'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { content } from '../content'
@@ -70,6 +71,13 @@ export function Craft() {
               </div>
             </article>
           ))}
+        </div>
+
+        <div className="craft-mill-cta">
+          <p>Want the real mill floor — steel, fruit, and the press in motion?</p>
+          <Link to="/mill" className="btn btn-ghost craft-mill-btn">
+            Watch the mill films →
+          </Link>
         </div>
       </div>
     </section>
